@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 10:12:25 by cjacques          #+#    #+#             */
-/*   Updated: 2015/11/26 10:37:58 by cjacques         ###   ########.fr       */
+/*   Created: 2015/11/26 15:17:40 by cjacques          #+#    #+#             */
+/*   Updated: 2015/11/30 15:23:31 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int		ft_atoi(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		result;
-	int		neg;
+	size_t	length;
+	char	*ptr;
+	size_t	i;
 
 	i = 0;
-	result = 0;
-	neg = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - 48);
-		i++;
-	}
-	if (neg == 1)
-		return (-result);
-	return (result);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	length = ft_strlen(s1) + ft_strlen(s2);
+	ptr = (char *)malloc(sizeof(ptr) * (length + 1));
+	if (ptr == NULL)
+		return (NULL);
+	ft_strcpy(ptr, s1);
+	ft_strcat(ptr, s2);
+	return (ptr);
 }

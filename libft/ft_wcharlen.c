@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_wcharlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cjacques <cjacques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:16:04 by cjacques          #+#    #+#             */
-/*   Updated: 2016/01/14 14:17:13 by cjacques         ###   ########.fr       */
+/*   Created: 2016/01/14 12:59:02 by cjacques          #+#    #+#             */
+/*   Updated: 2016/01/20 16:24:46 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+size_t		ft_wcharlen(wchar_t wchar)
 {
-	size_t	length;
-	char	*str;
-
-	if (s1 == NULL)
-		return (NULL);
-	length = ft_strlen(s1);
-	str = (char *)malloc(sizeof(str) * (length + 1));
-	if (str == NULL)
-		return (NULL);
-	str = ft_strcpy(str, s1);
-	return (str);
+	if (wchar <= 0x7F)
+		return (1);
+	else if (wchar <= 0x7FF)
+		return (2);
+	else if (wchar <= 0xFFFF)
+		return (3);
+	else if (wchar <= 0x1FFFFF)
+		return (4);
+	else
+		return (0);
 }

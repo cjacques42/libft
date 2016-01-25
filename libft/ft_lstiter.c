@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 10:12:25 by cjacques          #+#    #+#             */
-/*   Updated: 2015/11/26 10:37:58 by cjacques         ###   ########.fr       */
+/*   Created: 2015/11/30 14:02:49 by cjacques          #+#    #+#             */
+/*   Updated: 2015/11/30 17:43:57 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	int		i;
-	int		result;
-	int		neg;
-
-	i = 0;
-	result = 0;
-	neg = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (f == NULL || lst == NULL)
+		return ;
+	while (lst != NULL)
 	{
-		result = result * 10 + (str[i] - 48);
-		i++;
+		f(lst);
+		lst = lst->next;
 	}
-	if (neg == 1)
-		return (-result);
-	return (result);
 }

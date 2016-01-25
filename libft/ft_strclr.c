@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 10:12:25 by cjacques          #+#    #+#             */
-/*   Updated: 2015/11/26 10:37:58 by cjacques         ###   ########.fr       */
+/*   Created: 2015/11/26 13:29:38 by cjacques          #+#    #+#             */
+/*   Updated: 2015/11/26 13:34:29 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+void	ft_strclr(char *s)
 {
-	int		i;
-	int		result;
-	int		neg;
+	size_t	length;
 
-	i = 0;
-	result = 0;
-	neg = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	length = 0;
+	if (s != NULL)
 	{
-		result = result * 10 + (str[i] - 48);
-		i++;
+		length = ft_strlen(s);
+		ft_memset(s, '\0', length);
 	}
-	if (neg == 1)
-		return (-result);
-	return (result);
 }

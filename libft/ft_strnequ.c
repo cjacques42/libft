@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 10:12:25 by cjacques          #+#    #+#             */
-/*   Updated: 2015/11/26 10:37:58 by cjacques         ###   ########.fr       */
+/*   Created: 2015/11/26 14:42:44 by cjacques          #+#    #+#             */
+/*   Updated: 2015/11/30 15:21:45 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int		i;
-	int		result;
-	int		neg;
+	size_t	i;
 
 	i = 0;
-	result = 0;
-	neg = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2 != '\0' && i < n)
 		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - 48);
-		i++;
-	}
-	if (neg == 1)
-		return (-result);
-	return (result);
+	if (i == n || (!s1[i] && !s2[i]))
+		return (1);
+	else
+		return (0);
 }

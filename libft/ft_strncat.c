@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 10:12:25 by cjacques          #+#    #+#             */
-/*   Updated: 2015/11/26 10:37:58 by cjacques         ###   ########.fr       */
+/*   Created: 2015/11/25 11:33:37 by cjacques          #+#    #+#             */
+/*   Updated: 2015/11/25 13:07:31 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	int		i;
-	int		result;
-	int		neg;
+	size_t	i;
+	size_t	length;
 
+	length = ft_strlen(s1);
 	i = 0;
-	result = 0;
-	neg = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-')
-		neg = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (i < n && s2[i])
 	{
-		result = result * 10 + (str[i] - 48);
+		s1[length] = s2[i];
 		i++;
+		length++;
 	}
-	if (neg == 1)
-		return (-result);
-	return (result);
+	s1[length] = '\0';
+	return (s1);
 }

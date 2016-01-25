@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:16:04 by cjacques          #+#    #+#             */
-/*   Updated: 2016/01/14 14:17:13 by cjacques         ###   ########.fr       */
+/*   Created: 2015/11/26 11:59:40 by cjacques          #+#    #+#             */
+/*   Updated: 2015/11/30 15:15:53 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+void	ft_memdel(void **ap)
 {
-	size_t	length;
-	char	*str;
-
-	if (s1 == NULL)
-		return (NULL);
-	length = ft_strlen(s1);
-	str = (char *)malloc(sizeof(str) * (length + 1));
-	if (str == NULL)
-		return (NULL);
-	str = ft_strcpy(str, s1);
-	return (str);
+	if (ap == NULL || *ap == NULL)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

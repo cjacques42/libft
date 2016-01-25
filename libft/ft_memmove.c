@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:16:04 by cjacques          #+#    #+#             */
-/*   Updated: 2016/01/14 14:17:13 by cjacques         ###   ########.fr       */
+/*   Created: 2015/11/24 13:46:55 by cjacques          #+#    #+#             */
+/*   Updated: 2015/11/30 09:24:37 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	length;
-	char	*str;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	if (s1 == NULL)
-		return (NULL);
-	length = ft_strlen(s1);
-	str = (char *)malloc(sizeof(str) * (length + 1));
-	if (str == NULL)
-		return (NULL);
-	str = ft_strcpy(str, s1);
-	return (str);
+	i = len;
+	str1 = (unsigned char *)src;
+	str2 = (unsigned char *)dst;
+	if (dst < src)
+		ft_memcpy(dst, src, len);
+	else if (dst == src)
+		return (dst);
+	else
+		while (i > 0)
+		{
+			str2[i - 1] = str1[i - 1];
+			i--;
+		}
+	return (dst);
 }
