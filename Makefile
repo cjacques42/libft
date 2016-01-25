@@ -6,13 +6,13 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/01/14 09:55:16 by cjacques         ###   ########.fr        #
+#    Updated: 2016/01/25 12:29:42 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC_NAME =	ft_memset.c				\
+SRC_LIBFT =	ft_memset.c				\
 			ft_bzero.c				\
 			ft_memcpy.c				\
 			ft_memccpy.c			\
@@ -74,19 +74,21 @@ SRC_NAME =	ft_memset.c				\
 			ft_putwchar_fd.c		\
 			ft_putwstr.c			\
 			ft_putwstr_fd.c			\
-			ft_wstrlen.c
+			ft_wstrlen.c			\
+			ft_wcharlen.c			\
+			get_next_line.c
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ_LIBFT = $(SRC_LIBFT:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Werror -Wextra $(SRC_NAME) -I includes
-	ar rc $(NAME) $(OBJ_NAME)
+	gcc -c -Wall -Werror -Wextra $(SRC_LIBFT) -I includes
+	ar rc $(NAME) $(OBJ_LIBFT)
 	ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ_NAME)
+	/bin/rm -rf $(OBJ_LIBFT)
 
 fclean: clean
 	/bin/rm -f $(NAME)
@@ -94,5 +96,4 @@ fclean: clean
 re: fclean all
 
 norme:
-	norminette $(SRC_NAME)
-	norminette includes/libft.h
+	norminette $(SRC_LIBFT)
