@@ -6,7 +6,7 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/01/25 14:04:44 by cjacques         ###   ########.fr        #
+#    Updated: 2016/01/25 14:37:42 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ $(NAME): $(OBJ_NAME)
 	@ranlib $(NAME)
 
 %.o:%.c
-	@mkdir -p obj
+	@mkdir -p $(OBJ_PATH)
 	$(CC) $(CFLAGS) -I includes -c $<  -o $(OBJ_PATH)$@
 
 clean:
@@ -102,7 +102,5 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
-
-
 
 .PHOONY: all clean fclean re norme
