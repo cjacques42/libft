@@ -6,13 +6,16 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/01/25 12:29:42 by cjacques         ###   ########.fr        #
+#    Updated: 2016/01/25 14:04:44 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
-SRC_LIBFT =	ft_memset.c				\
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
+OBJ_PATH = obj/
+SRC_PATH =
+SRC_NAME =	ft_memset.c				\
 			ft_bzero.c				\
 			ft_memcpy.c				\
 			ft_memccpy.c			\
@@ -78,22 +81,28 @@ SRC_LIBFT =	ft_memset.c				\
 			ft_wcharlen.c			\
 			get_next_line.c
 
-OBJ_LIBFT = $(SRC_LIBFT:.c=.o)
+OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+SRC = $(addprefix $(SRC_PATH), $(SRC))
 
 all: $(NAME)
 
-$(NAME):
-	gcc -c -Wall -Werror -Wextra $(SRC_LIBFT) -I includes
-	ar rc $(NAME) $(OBJ_LIBFT)
-	ranlib $(NAME)
+$(NAME): $(OBJ_NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+
+%.o:%.c
+	@mkdir -p obj
+	$(CC) $(CFLAGS) -I includes -c $<  -o $(OBJ_PATH)$@
 
 clean:
-	/bin/rm -rf $(OBJ_LIBFT)
+	@/bin/rm -rf $(OBJ_PATH)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 
-norme:
-	norminette $(SRC_LIBFT)
+
+
+.PHOONY: all clean fclean re norme
