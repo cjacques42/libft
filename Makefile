@@ -6,7 +6,7 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/02/23 09:05:13 by cjacques         ###   ########.fr        #
+#    Updated: 2016/02/23 09:07:30 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o:%.c
 	@mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) -I includes -c $<  -o $@
+	@$(CC) $(CFLAGS) -I includes -c $<  -o $@
 
 clean:
 	@/bin/rm -rf $(OBJ_PATH)
