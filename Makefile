@@ -6,7 +6,7 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/01/25 14:37:42 by cjacques         ###   ########.fr        #
+#    Updated: 2016/02/23 09:05:13 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,13 +87,13 @@ SRC = $(addprefix $(SRC_PATH), $(SRC))
 
 all: $(NAME)
 
-$(NAME): $(OBJ_NAME)
+$(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-%.o:%.c
+$(OBJ_PATH)%.o:%.c
 	@mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) -I includes -c $<  -o $(OBJ_PATH)$@
+	$(CC) $(CFLAGS) -I includes -c $<  -o $@
 
 clean:
 	@/bin/rm -rf $(OBJ_PATH)
