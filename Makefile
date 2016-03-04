@@ -6,7 +6,7 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/03/04 10:57:20 by cjacques         ###   ########.fr        #
+#    Updated: 2016/03/04 15:16:52 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ SRC = $(addprefix $(SRC_PATH), $(SRC))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo -en "\033[32mLibft......\033[0m"
+	@echo -en "\033[32mLibft.....\033[0m"
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo -e "\033[32m      √\033[0m"
