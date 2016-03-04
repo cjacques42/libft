@@ -6,10 +6,11 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/02/23 09:07:30 by cjacques         ###   ########.fr        #
+#    Updated: 2016/03/04 10:57:20 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+SHELL = BASH
 NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -79,6 +80,7 @@ SRC_NAME =	ft_memset.c				\
 			ft_putwstr_fd.c			\
 			ft_wstrlen.c			\
 			ft_wcharlen.c			\
+			ft_strtok.c				\
 			get_next_line.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -88,8 +90,10 @@ SRC = $(addprefix $(SRC_PATH), $(SRC))
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo -en "\033[32mLibft......\033[0m"
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@echo -e "\033[32m      √\033[0m"
 
 $(OBJ_PATH)%.o:%.c
 	@mkdir -p $(OBJ_PATH)
@@ -103,4 +107,4 @@ fclean: clean
 
 re: fclean all
 
-.PHOONY: all clean fclean re norme
+.PHOONY: all clean fclean re
