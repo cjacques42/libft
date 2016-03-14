@@ -6,7 +6,7 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/03/04 15:16:52 by cjacques         ###   ########.fr        #
+#    Updated: 2016/03/14 09:10:47 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,12 +68,6 @@ SRC_NAME =	ft_memset.c				\
 			ft_putstr_fd.c			\
 			ft_putendl_fd.c			\
 			ft_putnbr_fd.c			\
-			ft_lstnew.c				\
-			ft_lstdelone.c			\
-			ft_lstdel.c				\
-			ft_lstadd.c				\
-			ft_lstiter.c			\
-			ft_lstmap.c				\
 			ft_putwchar.c			\
 			ft_putwchar_fd.c		\
 			ft_putwstr.c			\
