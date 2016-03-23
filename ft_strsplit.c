@@ -6,7 +6,7 @@
 /*   By: cjacques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 17:15:20 by cjacques          #+#    #+#             */
-/*   Updated: 2015/12/10 12:53:30 by cjacques         ###   ########.fr       */
+/*   Updated: 2016/03/16 11:45:24 by cjacques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,16 @@ static size_t	count_words(char const *s, char c)
 	{
 		while (s[i] && s[i] != c)
 			i++;
-		while (s[i] && s[i] == c)
+		if (s[i])
 			i++;
 		words++;
 	}
-	if (s[0] == c)
-		words--;
 	return (words);
 }
 
 static char		*strcomplete(const char *s, size_t *j, size_t *len, int c)
 {
-	while (s[*j] == c)
-		(*j)++;
+	(*j)++;
 	while (s[*j] != c && s[*j])
 	{
 		(*j)++;
