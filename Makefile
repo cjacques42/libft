@@ -6,7 +6,7 @@
 #    By: cjacques <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 10:02:34 by cjacques          #+#    #+#              #
-#    Updated: 2016/03/14 09:10:47 by cjacques         ###   ########.fr        #
+#    Updated: 2016/03/29 09:18:58 by cjacques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,11 +75,29 @@ SRC_NAME =	ft_memset.c				\
 			ft_wstrlen.c			\
 			ft_wcharlen.c			\
 			ft_strtok.c				\
-			get_next_line.c
+			get_next_line.c			\
+			ft_call.c				\
+			ft_cast_unsigned.c		\
+			ft_extract.c			\
+			ft_nbrlen.c				\
+			ft_print_char.c			\
+			ft_print_hex.c			\
+			ft_print_oct.c			\
+			ft_print_percent.c		\
+			ft_print_signed.c		\
+			ft_print_str.c			\
+			ft_print_unsigned.c		\
+			ft_print_void.c			\
+			ft_print_wchar.c		\
+			ft_print_wstr.c			\
+			ft_printf.c				\
+			ft_printnchar.c			\
+			ft_putbase.c			\
+			ft_retfield.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
-SRC = $(addprefix $(SRC_PATH), $(SRC))
+	OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+	SRC = $(addprefix $(SRC_PATH), $(SRC))
 
 all: $(NAME)
 
